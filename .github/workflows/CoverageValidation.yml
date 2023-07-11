@@ -40,4 +40,4 @@ jobs:
           
       - name: Exclude Program class from coverage
         run: |
-          echo "-[Namespace].Program" >> coverlet.exclude
+          echo "-ToDo.Api.Program" >> coverlet.exclude
