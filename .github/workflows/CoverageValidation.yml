@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Clean solution
-        run: dotnet clean path/to/YourSolution.sln
+        run: dotnet clean src/TodoApi.sln
 
       - name: Restore dependencies
         run: dotnet restore src/Todo.Tests/Todo.Tests.csproj
