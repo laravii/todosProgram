@@ -22,7 +22,7 @@ jobs:
         run: dotnet restore src/Todo.Tests/Todo.Tests.csproj
 
       - name: Build and run tests
-        run: dotnet test --collect:"XPlat Code Coverage" path/to/YourTestProject.csproj
+        run: dotnet test --collect:"XPlat Code Coverage" src/Todo.Tests/Todo.Tests.csproj
 
       - name: Validate code coverage
         run: |
