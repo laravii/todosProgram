@@ -18,6 +18,9 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
+      - name: Clean solution
+        run: dotnet clean path/to/YourSolution.sln
+
       - name: Restore dependencies
         run: dotnet restore src/Todo.Tests/Todo.Tests.csproj
 
@@ -26,15 +29,21 @@ jobs:
 
       - name: Validate code coverage
         run: |
-          # Extract the coverage percentage from the generated report
-          coverage=$(cat src/Todo.Tests/TestResults/coverage.cobertura.xml | grep -oP '(?<=<LineRate>)[^<]+')
+          # Check if coverage file exists
+          if [ -f src/Todo.Tests/TestResults/coverage.cobertura.xml ]; then
+            # Extract the coverage percentage from the generated report
+            coverage=$(cat src/Todo.Tests/TestResults/coverage.cobertura.xml | grep -oP '(?<=<LineRate>)[^<]+')
 
-          # Convert coverage percentage to numeric value
-          coverage_percentage=$(awk "BEGIN {print $coverage * 100}")
+            # Convert coverage percentage to numeric value
+            coverage_percentage=$(awk "BEGIN {print $coverage * 100}")
 
-          # Check if coverage percentage is below the threshold
-          if (( $(echo "$coverage_percentage < 80" | bc -l) )); then
-            echo "Code coverage is below the threshold (80%). Coverage percentage: $coverage_percentage%"
+            # Check if coverage percentage is below the threshold
+            if (( $(echo "$coverage_percentage < 80" | bc -l) )); then
+              echo "Code coverage is below the threshold (80%). Coverage percentage: $coverage_percentage%"
+              exit 1
+            fi
+          else
+            echo "Code coverage file not found. Please ensure that coverage is being generated."
             exit 1
           fi
           
