@@ -31,7 +31,7 @@ jobs:
         run: ls src
 
       - name: View directory contents
-        run: ls ./
+        run: ls ./Tests
 
       - name: Validate code coverage
         run: |
