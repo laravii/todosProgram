@@ -31,12 +31,12 @@ jobs:
         run: ls src
 
       - name: View directory contents
-        run: ls ./Tests
+        run: ls ./Tests/TestResults
 
       - name: Validate code coverage
         run: |
           # Check if coverage file exists
-          if [ -f src/Todo.Tests/Tests/TestResults/coverage.cobertura.xml ]; then
+          if [ -f ./Tests/TestResults/coverage.cobertura.xml ]; then
             # Extract the coverage percentage from the generated report
             coverage=$(cat src/Todo.Tests/Tests/TestResults/coverage.cobertura.xml | grep -oP '(?<=<LineRate>)[^<]+')
 
