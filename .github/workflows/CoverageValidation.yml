@@ -26,6 +26,11 @@ jobs:
 
       - name: Build and run tests
         run: dotnet test --collect:"XPlat Code Coverage" --results-directory Tests/TestResults src/Todo.Tests/Todo.Tests.csproj
+        
+      - name: View directory contents
+        run: |
+            ls src
+            ls src/Todo.Tests
 
       - name: Validate code coverage
         run: |
