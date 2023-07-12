@@ -25,14 +25,14 @@ jobs:
         run: dotnet restore src/Todo.Tests/Todo.Tests.csproj
 
       - name: Build and run tests
-        run: dotnet test --collect:"XPlat Code Coverage" --results-directory /TestResults src/Todo.Tests/Todo.Tests.csproj
+        run: dotnet test --collect:"XPlat Code Coverage" --results-directory Tests/TestResults src/Todo.Tests/Todo.Tests.csproj
 
       - name: Validate code coverage
         run: |
           # Check if coverage file exists
-          if [ -f src/Todo.Tests/TestResults/coverage.cobertura.xml ]; then
+          if [ -f src/Todo.Tests/Tests/TestResults/coverage.cobertura.xml ]; then
             # Extract the coverage percentage from the generated report
-            coverage=$(cat src/Todo.Tests/TestResults/coverage.cobertura.xml | grep -oP '(?<=<LineRate>)[^<]+')
+            coverage=$(cat src/Todo.Tests/Tests/TestResults/coverage.cobertura.xml | grep -oP '(?<=<LineRate>)[^<]+')
 
             # Convert coverage percentage to numeric value
             coverage_percentage=$(awk "BEGIN {print $coverage * 100}")
