@@ -53,10 +53,3 @@ namespace Todo.Tests.Builders
         }
     }
 }
-//public int Id { get; set; }
-//public string Title { get; set; }
-//public string Description { get; set; }
-//public DateTime CreatedDate { get; set; }
-//public string TodoStatus { get; set; }
-//public bool IsCompleted { get { return Commons.TodoStatus.GetTodoStatus(TodoStatus).Equals(Commons.TodoStatus.Done); } }
-//public DateTime DueDate { get; set; }
