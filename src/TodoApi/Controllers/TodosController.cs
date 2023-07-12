@@ -10,7 +10,7 @@ using Todo.Domain.Validators;
 namespace ToDo.Api.Controllers.Controllers
 {
     [ApiController]
-    [Route("v1/api/todos")]
+    [Route("v1/todos")]
     public class TodosController : ControllerBase
     {
         private readonly ITodoService _todoService;
