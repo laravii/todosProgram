@@ -99,8 +99,8 @@ namespace Todo.Tests.Infrastructure.Repositories
         {
             // Arrange
             var todoItems = new List<TodoModel>() {
-            new TodoModelBuilder().Build(),
-            new TodoModelBuilder().Build()
+            new TodoModelBuilder().WithId(520).Build(),
+            new TodoModelBuilder().WithId(521).Build()
             };
 
             _context.Todos.AddRange(todoItems);
