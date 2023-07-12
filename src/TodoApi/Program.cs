@@ -31,8 +31,13 @@ builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<InsertTodoRequestValidator>();
 
 builder.Services
-    .AddDbContext<TodoContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("TodosConection")))
+    .AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodosDB"));
+
+//builder.Services
+//    .AddDbContext<TodoContext>(
+//    options => options.UseSqlServer(builder.Configuration.GetConnectionString("TodosConection")));
+
+builder.Services
     .AddScoped<ITodoService, TodoService>()
     .AddScoped<ITodoRepository, TodoRepository>();
 
