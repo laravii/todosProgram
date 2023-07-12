@@ -11,7 +11,7 @@ namespace Todo.Tests.Builders
     public class UpdateTodoRequestBuilder : BaseBuilder<UpdateTodoRequest>
     {
         private readonly static Faker _faker = new("pt_BR");
-        private string? _title = _faker.Random.Word();
+        private string? _title = "test tittle";
 
         public override UpdateTodoRequest Build() =>
             Faker
