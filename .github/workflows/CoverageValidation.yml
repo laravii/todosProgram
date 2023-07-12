@@ -30,8 +30,8 @@ jobs:
       - name: View src directory contents
         run: ls src
 
-      - name: View test directory contents
-        run: ls src/Todo.Tests
+      - name: View directory contents
+        run: ls ./
 
       - name: Validate code coverage
         run: |
