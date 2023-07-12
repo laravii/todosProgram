@@ -61,6 +61,20 @@ Regras :
 
 
 ### Informações técnicas
+
+#### Execução de testes unitários
+Executar o comando: 
+`dotnet test --verbosity minimal --collect:"XPlat Code Coverage"`
+
+O qual irá executar os testes unitários e criar uma pasta com o nome de um GUID dentro do diretorio Todo.Tests/TestResult e dentro dessa pasta o arquivo coverage.cobertura.xml. Para converter esse arquivo e obter de forma visual é necessário instalar uma ferramenta com o seguinte comando:
+`dotnet tool install --global dotnet-reportgenerator-globaltool --version 4.8.6`
+
+Com a ferramenta instalada, basta entrar no diretorio onde o arquivo coverage.cobertura.xml se encontra e executar o seguinte comando
+`reportgenerator "-reports:coverage.cobertura.xml" "-targetdir:coveragereport" -reporttypes:Html`
+
+Com isso será gerado uma pasta chamada coveragereport, que contem um arquivo index.html, basta selecionar e clicar duas vezes nesse arquivo para visualiza-lo.
+
+#### Configuração de banco de dados
   Nas configurações relacionadas a dados foi deixado na classe Program.cs a opção de conexão com banco de dados SQL, o qual encontra-se comentado, e a opção do banco de dados InMemory que encontra-se ativo, para que seja utilizado conforme necessidade. 
  Para uso do banco de dados InMemory basta executar a aplicação.
  Para uso de banco de dados SQL é necessário seguir os passos abaixo: 
