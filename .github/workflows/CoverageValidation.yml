@@ -25,10 +25,10 @@ jobs:
         run: dotnet restore src/Todo.Tests/Todo.Tests.csproj
 
       - name: Build and run tests
-        run: dotnet test --collect:"XPlat Code Coverage" --results-directory src/Todo.Tests/Todo.Tests.csproj
+        run: dotnet test --collect:"XPlat Code Coverage" --results-directory src src/Todo.Tests/Todo.Tests.csproj
         
       - name: View src directory contents
-        run: ls src
+        run: ls ./src
 
       - name: View directory contents
         run: ls ./
