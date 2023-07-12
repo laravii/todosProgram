@@ -10,18 +10,24 @@ namespace Todo.Tests.Builders
 {
     public class UpdateTodoRequestBuilder : BaseBuilder<UpdateTodoRequest>
     {
-        private readonly static Faker _faker = new("pt_BR");
         private string? _title = "test tittle";
+        private int _daysToFinish = 1;
 
         public override UpdateTodoRequest Build() =>
             Faker
             .RuleFor(p => p.Title, _title)
             .RuleFor(p => p.Description, f => f.Lorem.Lines(1))
-            .RuleFor(p => p.DaysToFinish, f => f.Random.Int(1, 10));
+            .RuleFor(p => p.DaysToFinish, _daysToFinish);
 
         public UpdateTodoRequestBuilder WithTitle(string? title = null)
         {
             _title = title;
+            return this;
+        }
+
+        public UpdateTodoRequestBuilder WithDaysToFinish(int daysToFinish)
+        {
+            _daysToFinish = daysToFinish;
             return this;
         }
     }

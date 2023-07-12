@@ -60,15 +60,18 @@ namespace Todo.Tests.Todo.Infrastructure.Services
         }
 
 
-        [Fact]
-        public void UpdateItem_Sucess()
+        [Theory]
+        [InlineData(4, "testing")]
+        [InlineData(0, "testing")]
+        [InlineData(5, "")]
+        public void UpdateItem_Sucess(int daysToFinish, string tittle)
         {
             var id = 1;
             _todoRepositoryMock
                 .Setup(x => x.GetById(It.IsAny<int>()))
                 .Returns(new TodoModelBuilder().WithId(id).Build());
 
-            var request = new UpdateTodoRequestBuilder().Build();
+            var request = new UpdateTodoRequestBuilder().WithDaysToFinish(daysToFinish).WithTitle(tittle).Build();
 
             var sut = GetSut();
             var result = sut.UpdateTodoItem(id, request);
